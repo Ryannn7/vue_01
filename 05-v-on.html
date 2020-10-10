@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-v-on</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--
+    第7小节： 使用v-on修饰事件
+    1，v-on中的事件修饰符
+        .stop:阻止事件冒泡
+        .prevent:阻止默认事件发生
+
+-->
+<body>
+    <div id="app">
+       <button v-on:click="{{ num-- }}">减少</button>
+       <button @click="increase">增加</button>
+        <h2>
+            num:{{ num}}
+        </h2>
+        <hr>
+        事件冒泡测试：<br>
+        <div style="background-color: aquamarine; width: 100px; height: 100px;" v-on:click="print('div被点击了')">
+            <button @click.stop="print('button被点击了')">点我试试</button>
+        </div>
+        <br>阻止默认事件：</br>
+        <a href="http://www.baidu.com" @click.prevent=print('点击了超链接')>百度一下</a>
+
+        
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+               language:[],
+               num:8
+            },
+            methods:{
+                method1:function name(params) {
+                    //方法一
+                },
+                method2:function(){
+                    //方法二
+                },
+                increase(){
+                    //方法三 。ES6的写法。
+                    this.num++
+                },
+                print(param){
+                    console.log(param)
+                }
+            }                
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-钩子函数</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--第4小节： 本章节目标：
+    1，学习钩子函数的生命周期
+    2,钩子函数的使用：1）在页面初始化的时候调用后台获取数据，加载到前台页面中
+    3，钩子函数：beforeCreated ,Created, destroyed
+
+    第5小节：插值、v-text、v-html的使用
+    指令：v-前缀的特殊属性
+    插值：{{ }}中的可以使用js表达式（必须有返回值），vue实例中的变量、方法
+    v-text:将数据输出到啊元素内部，如果输出的数据有HTML代码，会作为普通文本输出。
+    v-html:将数据输出到元素内部，如果输出的数据有HTML代码，会被渲染。
+
+-->
+<body>
+    <div id="app">
+        {{ msg }}
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+                msg:""
+            },
+            created(){
+                this.msg="hello vue ,created function";
+                console.log(msg)
+                console.log(this)
+            }        
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 v-for</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--
+    第8小节： 使用v-for遍历显示数据
+    1，在ul中遍历显示数据，可以使用（user,index）中的index表示索引
+    (value,key,index)中key可以显示属性，value显示值
+    
+
+-->
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(user,index) in users"> 
+                {{index}}=-={{ user.name}}--{{user.age}}--{{user.gender }}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(value,key,index) in person"> 
+              {{index}}=-= {{key}}=-={{ value}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(value,key) in users"> 
+                 {{key}}=-={{ value}}
+              </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+               users:[
+                    { "name":"张三","age":"18","gender":"男"},
+                    { "name":"李思","age":"15","gender":"男"},
+                    { "name":"王五","age":"19","gender":"男"},
+                  ],
+                person:{"name":"赵柳","age":"42","address":"北京"}
+            }                
+        })
+
+    </script>
+</body>
+</html>

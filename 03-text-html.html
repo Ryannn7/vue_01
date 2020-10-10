@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-v-text-html</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--
+    第5小节：插值、v-text、v-html的使用
+    指令：v-前缀的特殊属性
+    插值：{{ }}中的可以使用js表达式（必须有返回值），vue实例中的变量、方法
+    v-text:将数据输出到啊元素内部，如果输出的数据有HTML代码，会作为普通文本输出。
+    v-html:将数据输出到元素内部，如果输出的数据有HTML代码，会被渲染。
+
+-->
+<body>
+    <div id="app">
+        {{ msg }}</br>
+        v-text:<span v-text="msg"></span></br>
+        v-html:<span v-html="msg">msg</span>
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+                msg: "<h2>京东物流 Logistics JD</h2>"
+            }
+                
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--
+    第3小节：{{}}双向绑定与事件处理
+    1,使用{{ }}显示数据
+    2，使用v-model实现双向绑定
+    3，v-on演示事件处理
+
+    第4小节:vue实例
+    1，el: vue实例可以用在模板中，el 表示模板的名字
+    2，vue的指令只能在模板中使用，超出模板之外的是不支持vue指令的
+    3，data: 表示数据。在视图中使用v-model监视data中的属性变化。
+        vue实例被创建是，会尝试获取在data中定义的所有属性，用于视图的渲染，并且监视data中属性的变化，当data发生改变时，素有相关的视图都讲话重新渲染，
+        这就是“响应式”系统。  
+    4， 方法：     
+-->
+<body>
+    <div id="app">
+        <input type="text" v-model="num"> <button v-on:click="num++">点我</button>
+        <input type="text" v-model="name">
+        <h2>{{ name }}非常酷！共计有{{ num }}个部门。</h2>
+        <!--演示方法的使用-->
+        <button v-on:click="addmethod">点我方法</button>
+    </div>
+
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+                name:"京东",
+                num:8
+            },
+            methods:{
+                addmethod:function(){
+                    console.log("我是方法，被点了...")
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

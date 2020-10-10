@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 v-for</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <style type="text/css">
+        div{
+            width: 100px;
+            height: 100px;
+            color: white;
+        }
+
+        .redCls{
+            background-color: red;
+        }
+        .blueCls{
+            background-color: blue;
+        }
+    </style>
+</head>
+<!--
+    第10小节： 
+    v-bind使用，属性中使用v-bind绑定的数据。
+    1，{{}}插值是不能用在属性中的，属性中需要动态的获取值需要使用v-bind
+    2, 【v-bind:class】简写=> 【:class】
+-->
+<body>
+    <div id="app">
+      <button @click="color='redCls'">红色</button>
+      <button @click="color='blueCls'">蓝色</button>
+      <div v-bind:class="color">
+          点击改变按钮的颜色
+      </div>
+
+<hr>
+<div id="app">
+    <button @click="col=!col">点我改变下面色块的颜色</button>
+    <div :class="{redCls:col,blueCls:!col}">
+        点击改变按钮的颜色
+    </div>
+
+   
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",          
+            data:{
+                color:"redCls",
+                col:false
+            }                
+        })
+    </script>
+</body>
+</html>

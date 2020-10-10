@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 v-for</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--
+    第9小节： 
+    1,v-if 进行判断显示，如果为false，则数据不存在
+    2,v-show进行判断显示，如果是false，则css样式为display
+    3,v-if 与v-else要紧挨着用，不然v-else会失效。
+    
+
+-->
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(user,index) in users" v-if="user.gender=='女'" style="background-color: red;" > 
+                {{index}}=-={{ user.name}}--{{user.age}}--{{user.gender }}               
+            </li>
+            <li v-else style="background-color: green;" > 
+                {{index}}=-={{ user.name}}--{{user.age}}--{{user.gender }}               
+            </li>
+        </ul>
+        <hr>
+        <button @click="show=!show">按钮切换</button>
+            <h2 v-if="show">
+                Hello VueJS!
+            </h2>
+        <hr>
+            <h2 v-show="show">
+                Hello,1905
+            </h2>
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",          
+            data:{
+                show:true,
+               users:[
+                    { "name":"张三","age":"18","gender":"男"},
+                    { "name":"李思","age":"15","gender":"女"},
+                    { "name":"王五","age":"19","gender":"男"},
+                    { "name":"赵玲","age":"19","gender":"女"},
+                  ]
+              
+            }                
+        })
+
+    </script>
+</body>
+</html>

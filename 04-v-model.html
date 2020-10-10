@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-v-model</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<!--
+    第6小节：v-model实现双向绑定 ,因为v-model是双向绑定的，所以对于组件的使用是有要求的，div组建不能使用该功能
+    多个checkbox对应一个model,model的类型是一个数组，单个checkbox值是boolean类型
+    radio对应的值input的value值
+    input和textarea默认对应的model是字符串
+    select单选对应字符串，多选对应也是数组。 
+
+-->
+<body>
+    <div id="app">
+        <input type="checkbox" value="java" v-model="language">Java</br>
+        <input type="checkbox" value="Python" v-model="language">Python</br>
+        <input type="checkbox" value="Swift" v-model="language">Swift</br>
+        <h2>
+        您选择了：{{language.join(",")}}
+        </h2>
+        
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+               language:[]
+            }
+                
+        })
+
+    </script>
+</body>
+</html>
