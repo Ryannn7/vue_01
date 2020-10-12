@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Demo02</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in items">
+                {{ index}}=={{item.name}}=={{item.gender}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+                items:[]
+            },
+            created(){
+               
+                axios.get("../data.json")
+            //   axios({
+            //     url:"c",
+            //       method:"get"
+            //   })
+              .then( res=>{
+                      console.log(res)
+                      app.items=res.data
+                  }
+              ).catch(err=>alert(err))
+            }
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <!--
+        父组件向子组件中传递信息
+        问题：vsCode的提示不友好，对于模板template中全都是一个颜色，且没有关键字提示
+    -->
+</head>
+<body>
+
+    <div id="app">                
+        <!--<com-fore :items="lessons"></com-fore>-->
+        <!--如果模板中有大写字母，则在使用的过程中需要将大写字母转成小写字母且在大写字母前面加'-' -->
+        <com-fore :items="lessons"></com-fore>
+    </div>
+    
+
+
+    <script type="text/javascript">
+        //定义组件
+    const comFore={
+        template:`<ul>
+             <li v-for="item in items" :key="item.id">{{item.id}}--{{item.name}}</li>
+              </ul>`,
+        //接收父组件的属性，复杂的传递数组或者对象
+        props:{            
+            items:{
+                type:Array,
+                default:[]
+            }            
+        }
+    }
+    //声明组件
+    Vue.component("comFore",comFore)
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:"父组件向子组件传递",
+            lessons:[
+                {"id":1,"name":"Java"},
+                {"id":2,"name":"Python"},
+                {"id":3,"name":"C#"}
+            ]
+        }
+
+    })
+
+    </script>
+
+
+    
+</body>
+</html>

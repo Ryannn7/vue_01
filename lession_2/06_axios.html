@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios的使用</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <!--
+        axios的使用：
+        1，
+    -->
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(user,index) in users"> 
+                {{index}}=-={{ user.name}}--{{user.age}}--{{user.gender }}
+            </li>
+        </ul>       
+    </div>
+    <script type="text/javascript">
+        var app=new Vue({
+            el:"#app",
+            data:{
+               users:[]                
+                                  
+            } ,
+            created(){
+                //初始化加载数据：
+                axios({
+                    url:"../data.json",
+                    method:"get"
+                }).then(res=>{
+                    console.log(res)
+                    app.users=res.data
+                }).catch(err=>alert(err));
+            }            
+        })
+
+    </script>
+    
+</body>
+</html>

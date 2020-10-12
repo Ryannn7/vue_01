@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子组件向父组件传递数据</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <!--
+        目标：子组件向父组件中传递数据
+    -->
+</head>
+<body>
+    <div id="app">    
+        
+       <child-comp @add="insr()" @sub="desc()" v-bind:snum="num"></child-comp>
+    </div>
+
+
+    <script type="text/javascript">
+    const childComp={
+        template:
+        `<div>
+              <h2> 数值：{{snum }}</h2>
+              <button @click="inscechild" >递增++</button>
+              <button @click="descchild">递减--</button>
+          </div>
+        `,
+        props:["snum"],
+        methods:{
+            inscechild(){
+                return this.$emit("add")
+            },
+            descchild(){
+                return this.$emit("sub")
+            }
+            
+        }
+    }    
+
+    Vue.component("childComp",childComp)
+   
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            num:7
+        },
+        methods:{
+            insr(){
+                return this.num++
+            },
+            desc(){
+                return this.num--
+            }
+
+        }
+    })
+
+    </script>
+    
+</body>
+</html>

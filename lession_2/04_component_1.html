@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <instroduce v-bind:title="msg"></instroduce>
+    </div>
+
+    
+
+
+    <script type="text/javascript">
+        //定义组件
+    const instroduce={
+        template:"<h2>{{ title }}</h2>",
+        //接收父组件的属性,简单的传递字符串
+        props:["title"]
+    }
+    //声明组件
+    Vue.component("instroduce",instroduce);
+
+    var app=new Vue({
+        el:"#app",
+        data:{
+            msg:"父组件向子组件传递"
+        }
+
+    })
+
+    </script>
+
+
+    
+</body>
+</html>

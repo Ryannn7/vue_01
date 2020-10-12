@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <!--
+        下拉框列表中，如果选择了下拉框值，对应做出相应的改变
+    -->
+    
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" v-model=message>
+        <br>
+        <input type="text" v-model=person.name><br>
+        <input type="text" v-model=person.age><button v-on:click=person.age++></button><br>
+        <h2>
+            姓名是：{{person.name}}, 年龄是：{{person.age}}
+        </h2>
+
+    </div>
+
+    <script type="text/javascript">
+     var app=new Vue({
+        el:"#app",
+        data:{
+            message:"京东",
+            person:{
+                name:"张三",
+                age:"16"
+            }
+        },
+        watch:{
+            message(newMeg,oldMsg){
+                console.log("新值:"+newMeg+", 旧值:"+oldMsg)
+            },
+            person:{
+                deep:true,
+                handler(obj){
+                    console.log("name"+obj.name+"年龄："+obj.age)
+                }
+            }
+        }
+     })
+    </script>
+    
+</body>
+</html>
